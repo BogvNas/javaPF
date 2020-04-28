@@ -1,1 +1,2 @@
-# My lesson project Personal Finance
+# My lesson project Personal Finance!
+He is still in development...........
