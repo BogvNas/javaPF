@@ -1,1 +1,1 @@
-# javaPF
+# My lesson project Personal Finance
