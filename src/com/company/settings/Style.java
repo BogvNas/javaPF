@@ -75,4 +75,11 @@ final public class Style {
     public static final ImageIcon ICON_TITLE =new ImageIcon("images/title.png");
     public static final ImageIcon ICON_CURRENCY =new ImageIcon("images/currency.png");
     public static final ImageIcon ICON_AMOUNT =new ImageIcon("images/amount.png");
+    public static final ImageIcon ICON_ACCOUNT =new ImageIcon("images/account.png");
+    public static final ImageIcon ICON_ARTICLE =new ImageIcon("images/article.png");
+    public static final ImageIcon ICON_NOTICE =new ImageIcon("images/notice.png");
+    public static final ImageIcon ICON_CODE =new ImageIcon("images/code.png");
+    public static final ImageIcon ICON_RATE =new ImageIcon("images/rate.png");
+    public static final ImageIcon ICON_ON =new ImageIcon("images/on.png");
+    public static final ImageIcon ICON_BASE =new ImageIcon("images/base.png");
 }

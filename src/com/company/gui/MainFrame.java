@@ -1,8 +1,9 @@
 package com.company.gui;
 
-import com.company.gui.dialog.AccountAddEditDialog;
+import com.company.gui.dialog.*;
 import com.company.gui.menu.MainMenu;
 import com.company.gui.toolbar.MainToolBar;
+import com.company.model.Article;
 import com.company.settings.Style;
 import com.company.settings.Text;
 
@@ -22,7 +23,7 @@ public class MainFrame extends JFrame implements Refresh{
     public MainFrame(){
         super(Text.get("PROGRAMM_NAME"));
 
-        new AccountAddEditDialog(this).showDialog();
+        new CurrencyAddEditDialog(this).showDialog();
 
         setResizable(false);
         setIconImage(Style.ICON_MAIN.getImage());
