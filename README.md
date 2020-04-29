@@ -1,1 +1,2 @@
-# javaPF
+# My learning project Personal Finance!
+He is still in development...........
