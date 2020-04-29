@@ -22,13 +22,15 @@ import java.util.Map;
  */
 abstract public class AddEditDialog extends JDialog {
 
-    protected LinkedHashMap<String, JComponent> components = new LinkedHashMap<>();
-    protected LinkedHashMap<String, ImageIcon> icons = new LinkedHashMap<>();
-    protected LinkedHashMap<String, Object> values = new LinkedHashMap<>();
-    protected  Common c;
+    private final MainFrame frame;
+    protected LinkedHashMap<String, JComponent> components = new LinkedHashMap();
+    protected LinkedHashMap<String, ImageIcon> icons = new LinkedHashMap();
+    protected LinkedHashMap<String, Object> values = new LinkedHashMap();
+    protected Common c;
 
     public AddEditDialog(MainFrame frame) {
         super(frame, Text.get("ADD"), true);
+        this.frame = frame;
         setResizable(false);
     }
 
@@ -41,8 +43,8 @@ abstract public class AddEditDialog extends JDialog {
     }
 
     public final void showDialog() {
-        setVisible(true);
         setDialog();
+        setVisible(true);
     }
 
     public final void closeDialog() {
@@ -93,7 +95,6 @@ abstract public class AddEditDialog extends JDialog {
                 if (values.containsKey(key))
                     ((UtilDateModel) ((JDatePickerImpl) component).getModel()).setValue((Date) values.get(key));
             }
-
             component.setAlignmentX(JComponent.LEFT_ALIGNMENT);
             add(label);
             add(Box.createVerticalStrut(Style.PADDING_DIALOG));

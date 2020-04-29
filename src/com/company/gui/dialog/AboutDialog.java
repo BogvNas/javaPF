@@ -1,5 +1,7 @@
 package com.company.gui.dialog;
 
+import com.company.exception.ModelException;
+import com.company.model.Common;
 import com.company.settings.Style;
 import com.company.settings.Text;
 
