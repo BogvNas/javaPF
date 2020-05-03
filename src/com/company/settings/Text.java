@@ -128,6 +128,8 @@ final public class Text {
         data.put("LABEL_ON", "Включено:");
         data.put("LABEL_BASE", "Базовая:");
 
+        data.put("BALANCE_CURRENCIES", "Баланс по валютам");
+        data.put("BALANCE", "Итоговый баланс");
 
         data.put("FC_HOME", "Домашняя директория");
         data.put("FC_OPEN", "Открыть");
@@ -146,6 +148,32 @@ final public class Text {
         data.put("FC_DATE", "Дата");
         data.put("FC_ATTR", "Атрибуты");
         data.put("FC_ALL_FILTER", "Все файлы");
+
+        data.put("LAST_TRANSACTIONS", "Последние транзакции");
+        data.put("ACCOUNTS", "Счета");
+        data.put("ARTICLES", "Статьи");
+        data.put("TRANSACTIONS", "Транзакции");
+        data.put("TRANSFERS", "Переводы");
+        data.put("CURRENCIES", "Валюты");
+        data.put("STATISTICS", "Статистика");
+        data.put("CHART_INCOME", "Доходы по статьям");
+        data.put("CHART_EXP", "Расоды по статьям");
+
+        data.put("DATE", "Все файлы");
+        data.put("TITLE", "Название");
+        data.put("ACCOUNT", "Счет");
+        data.put("ARTICLE", "Статья");
+        data.put("AMOUNT", "Сумма");
+        data.put("NOTICE", "Примечание");
+        data.put("FROM_AMOUNT", "Откуда");
+        data.put("TO_AMOUNT", "Куда");
+        data.put("FROM_ACCOUNT", "Снято");
+        data.put("TO_ACCOUNT", "Зачислено");
+        data.put("CODE", "Код");
+        data.put("RATE", "Курс");
+        data.put("ON", "Включено");
+        data.put("BASE", "Базовая");
+        data.put("CHART_NO_DATA", "Нет данных за выбранный период!");
 
         data.put("DIALOG_ABOUT_TITLE","О программе");
         data.put("ABOUT", "<body style='font-size: 120%; text-align: center; width: 350px;'>" +

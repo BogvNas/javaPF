@@ -1,7 +1,7 @@
 package com.company.gui.dialog;
 
 import com.company.exception.ModelException;
-import com.company.gui.MainButtom;
+import com.company.gui.MainButton;
 import com.company.gui.MainFrame;
 import com.company.model.Common;
 import com.company.settings.HandlerCode;
@@ -103,13 +103,13 @@ abstract public class AddEditDialog extends JDialog {
 
         }
 
-        MainButtom ok = new MainButtom(Text.get("ADD"), Style.ICON_OK, null, HandlerCode.ADD);
+        MainButton ok = new MainButton(Text.get("ADD"), Style.ICON_OK, null, HandlerCode.ADD);
         if (!isAdd()) {
             ok.setActionCommand(HandlerCode.EDIT);
             ok.setText(Text.get("EDIT"));
         }
 
-        MainButtom cancel = new MainButtom(Text.get("CANCEL"), Style.ICON_CANCEL, null, HandlerCode.CANCEL);
+        MainButton cancel = new MainButton(Text.get("CANCEL"), Style.ICON_CANCEL, null, HandlerCode.CANCEL);
 
         JPanel panelButtons = new JPanel();
         panelButtons.setLayout(new BorderLayout());

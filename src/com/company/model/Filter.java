@@ -26,6 +26,7 @@ public class Filter {
 
     public Filter(int step) {
         this.step = step;
+        setFromTo(new GregorianCalendar());
     }
 
     public int getStep() {
@@ -36,96 +37,84 @@ public class Filter {
         return from;
     }
 
-    public void setFrom(Date from) {
-        this.from = from;
-    }
-
     public Date getTo() {
         return to;
     }
 
-    public void setTo(Date to) {
-        this.to = to;
+    public void next() {
+        offset(1);
     }
 
-    private void setFromTo(Calendar calendar){
-        switch (step){
+    public void prev() {
+        offset(-1);
+    }
+
+    public void nextPeriod() {
+        step += 1;
+        if (step > STEP_YEAR) step = STEP_DAY;
+        setFromTo(new GregorianCalendar());
+    }
+
+    public boolean check(Date date) {
+        return ((date.compareTo(from) > 0) && (date.compareTo(to) < 0));//change the condition after completing the course
+    }
+
+    private void setFromTo(Calendar calendar) {
+        switch (step) {
             case STEP_DAY:
                 this.from = new GregorianCalendar(
                         calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH),
-                        calendar.get(calendar.DAY_OF_MONTH),
-                        0,0,0).getTime();
+                        calendar.get(Calendar.DAY_OF_MONTH),
+                        0, 0, 0).getTime();
                 this.to = new GregorianCalendar(
                         calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH),
-                        calendar.get(calendar.DAY_OF_MONTH),
-                        23,59,59).getTime();
+                        calendar.get(Calendar.DAY_OF_MONTH),
+                        23, 59, 59).getTime();
                 break;
-
             case STEP_MONTH:
-                YearMonth yearMonth = YearMonth.of(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH) + 1);
+                YearMonth yearMonth = YearMonth.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1);
                 this.from = new GregorianCalendar(
                         calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH),
                         1,
-                        0,0,0).getTime();
+                        0, 0, 0).getTime();
                 this.to = new GregorianCalendar(
                         calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH),
                         yearMonth.lengthOfMonth(),
-                        23,59,59).getTime();
+                        23, 59, 59).getTime();
                 break;
-
-                case STEP_YEAR:
+            case STEP_YEAR:
                 this.from = new GregorianCalendar(
                         calendar.get(Calendar.YEAR),
                         0,
                         1,
-                        0,0,0).getTime();
+                        0, 0, 0).getTime();
                 this.to = new GregorianCalendar(
                         calendar.get(Calendar.YEAR),
                         11,
                         31,
-                        23,59,59).getTime();
+                        23, 59, 59).getTime();
                 break;
         }
     }
 
-    private void offset(int i){
+    private void offset(int i) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(from);
-        switch (step){
+        switch (step) {
             case STEP_DAY:
                 calendar.add(Calendar.DAY_OF_MONTH, i);
                 break;
-
             case STEP_MONTH:
                 calendar.add(Calendar.MONTH, i);
                 break;
-
             case STEP_YEAR:
                 calendar.add(Calendar.YEAR, i);
-                break;
         }
         setFromTo(calendar);
     }
 
-    public void next(){
-        offset(1);
-    }
-
-    public void prev(){
-        offset(-1);
-    }
-
-    public void nextPeriod(){
-        step += 1;
-        if(step > STEP_YEAR) step = STEP_DAY;
-        setFromTo(new GregorianCalendar());
-    }
-
-    public boolean check(Date date){
-        return (date.compareTo(from) > 0) && (date.compareTo(to) < 0);
-    }
 }

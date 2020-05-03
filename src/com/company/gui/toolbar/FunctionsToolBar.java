@@ -1,7 +1,7 @@
 package com.company.gui.toolbar;
 
 import com.company.gui.EnableEditDelete;
-import com.company.gui.MainButtom;
+import com.company.gui.MainButton;
 import com.company.settings.HandlerCode;
 import com.company.settings.Style;
 import com.company.settings.Text;
@@ -10,12 +10,12 @@ import com.company.settings.Text;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class FunctionsToolbar extends AbstractToolbar implements EnableEditDelete {
+public class FunctionsToolBar extends AbstractToolBar implements EnableEditDelete {
 
-    private MainButtom editButton;
-    private MainButtom deleteButton;
+    private MainButton editButton;
+    private MainButton deleteButton;
 
-    public FunctionsToolbar() {
+    public FunctionsToolBar() {
         super(Style.BORDER_FUNCTIONS_TOOLBAR);
         init();
     }

@@ -8,7 +8,7 @@ import com.company.settings.Text;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public final class MainToolBar extends AbstractToolbar {
+public final class MainToolBar extends AbstractToolBar {
 
     public MainToolBar() {
         super(Style.BORDER_MAIN_TOOLBAR);

@@ -30,18 +30,17 @@ public class Statistics {
         return amount;
     }
 
-    private static HashMap<String, Double> getDataForChartOnIncomeArticles(boolean income) {
+    public static HashMap<String, Double> getDataForChartOnIncomeArticles() {
         return getDataForChartOnArticles(true);
     }
 
-    private static HashMap<String, Double> getDataForChartOnExpArticles(boolean income) {
+    public static HashMap<String, Double> getDataForChartOnExpArticles() {
         return getDataForChartOnArticles(false);
     }
 
     private static HashMap<String, Double> getDataForChartOnArticles(boolean income) {
-        List<Transaction> transactions = SaveData.getInstance().getTransactions();
-        HashMap<String, Double> data = new HashMap<>();
-
+        List<Transaction> transactions = SaveData.getInstance().getFilterTransactions();
+        HashMap<String, Double> data = new HashMap();
         for (Transaction t : transactions) {
             if ((income && t.getAmount() > 0) || (!income && t.getAmount() < 0)) {
                 String key = t.getArticle().getTitle();
@@ -57,7 +56,7 @@ public class Statistics {
     }
 
     private static double round(double value) {
-        return (double) Math.round(value * 100 / 100);
+        return (double) Math.round(value * 100) / 100;
     }
 }
 

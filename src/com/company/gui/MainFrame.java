@@ -1,9 +1,8 @@
 package com.company.gui;
 
-import com.company.gui.dialog.*;
 import com.company.gui.menu.MainMenu;
+import com.company.gui.panel.*;
 import com.company.gui.toolbar.MainToolBar;
-import com.company.model.Article;
 import com.company.settings.Style;
 import com.company.settings.Text;
 
@@ -17,13 +16,13 @@ import java.awt.*;
 public class MainFrame extends JFrame implements Refresh{
 
     private final GridBagConstraints constraints;
+    private final LeftPanel leftPanel;
+    private RightPanel rightPanel;
     private final MainMenu mb;
     private final MainToolBar tb;
 
     public MainFrame(){
         super(Text.get("PROGRAMM_NAME"));
-
-        new CurrencyAddEditDialog(this).showDialog();
 
         setResizable(false);
         setIconImage(Style.ICON_MAIN.getImage());
@@ -49,14 +48,41 @@ public class MainFrame extends JFrame implements Refresh{
         constraints.anchor = GridBagConstraints.NORTH;
 
         //add left panel
-        pack();
+        leftPanel = new LeftPanel(this);
+        add(leftPanel, constraints);
 
+        //RightPanel
+        setRightPanel(new StatisticsPanel(this));
+
+        pack();
         setLocationRelativeTo(null);
+
+
     }
+
 
     @Override
     public void refresh() {
         SwingUtilities.updateComponentTreeUI(this);
-        mb.refresh();
+        tb.refresh();
+        leftPanel.refresh();
+        rightPanel.refresh();
+        pack();
     }
+
+    public MainMenu getMenu() {
+        return mb;
+    }
+
+    public void setRightPanel(RightPanel panel) {
+        if (rightPanel != null) remove(rightPanel);
+        constraints.gridy = 1;
+        constraints.gridx = 1;
+        rightPanel = panel;
+        panel.setBorder(Style.BORDER_PANEL);
+        add(rightPanel, constraints);
+        pack();
+    }
+
+    public RightPanel getRightPanel() { return rightPanel; }
 }

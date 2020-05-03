@@ -11,9 +11,9 @@ import java.awt.event.MouseListener;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class MainButtom extends JButton{
+public class MainButton extends JButton{
 
-    public MainButtom(String title, ImageIcon icon, ActionListener listener, String action){
+    public MainButton(String title, ImageIcon icon, ActionListener listener, String action){
         super(title);
         setIcon(icon);
         setActionCommand(action);
@@ -25,11 +25,11 @@ public class MainButtom extends JButton{
         setBackground(Style.COLOR_BUTTON_BG_NORMAL);
     }
 
-    public MainButtom(String title,ActionListener listener, String action){
+    public MainButton(String title, ActionListener listener, String action){
         this(title, null, listener, action);
     }
 
-    public MainButtom(ImageIcon icon,ActionListener listener, String action){
+    public MainButton(ImageIcon icon, ActionListener listener, String action){
         this("", icon, listener, action);
     }
 
@@ -52,12 +52,12 @@ public class MainButtom extends JButton{
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            ((MainButtom)e.getSource()).setBackground(Style.COLOR_BUTTON_BG_HOVER);
+            ((MainButton)e.getSource()).setBackground(Style.COLOR_BUTTON_BG_HOVER);
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-            ((MainButtom)e.getSource()).setBackground(Style.COLOR_BUTTON_BG_NORMAL);
+            ((MainButton)e.getSource()).setBackground(Style.COLOR_BUTTON_BG_NORMAL);
         }
     }
 
