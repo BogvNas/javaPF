@@ -1,2 +1,3 @@
 # My learning project Personal Finance!
-He is still in development...........
+
+This project runs on Java 1.8
