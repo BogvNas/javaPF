@@ -13,13 +13,13 @@ import java.util.List;
 @XmlRootElement(name = "data")
 public class Wrapper {
 
-    private List <Article> articles;
-    private List <Account> accounts;
-    private List <Transaction> transactions;
-    private List <Transfer> transfers;
+    private List<Article> articles;
+    private List<Account> accounts;
+    private List<Transaction> transactions;
+    private List<Transfer> transfers;
     private List<Currency> currencies;
 
-    @XmlElement( name = "articles")
+    @XmlElement(name = "articles")
     public List<Article> getArticles() {
         return articles;
     }
@@ -28,7 +28,7 @@ public class Wrapper {
         this.articles = articles;
     }
 
-    @XmlElement( name = "accounts")
+    @XmlElement(name = "accounts")
     public List<Account> getAccounts() {
         return accounts;
     }
@@ -37,7 +37,7 @@ public class Wrapper {
         this.accounts = accounts;
     }
 
-    @XmlElement( name = "transactions")
+    @XmlElement(name = "transactions")
     public List<Transaction> getTransactions() {
         return transactions;
     }
@@ -46,7 +46,7 @@ public class Wrapper {
         this.transactions = transactions;
     }
 
-    @XmlElement( name = "transfers")
+    @XmlElement(name = "transfers")
     public List<Transfer> getTransfers() {
         return transfers;
     }
@@ -55,7 +55,7 @@ public class Wrapper {
         this.transfers = transfers;
     }
 
-    @XmlElement( name = "currencies")
+    @XmlElement(name = "currencies")
     public List<Currency> getCurrencies() {
         return currencies;
     }
@@ -63,4 +63,7 @@ public class Wrapper {
     public void setCurrencies(List<Currency> currencies) {
         this.currencies = currencies;
     }
+
+
+
 }

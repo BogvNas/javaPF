@@ -4,7 +4,7 @@ package com.company.settings;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class HandlerCode {
+final public class HandlerCode {
 
     public static final String MENU_FILE_NEW = "MENU_FILE_NEW";
     public static final String MENU_FILE_OPEN = "MENU_FILE_OPEN";
@@ -21,6 +21,8 @@ public class HandlerCode {
     public static final String MENU_VIEW_TRANSFERS = "MENU_VIEW_TRANSFERS";
     public static final String MENU_VIEW_CURRENCIES = "MENU_VIEW_CURRENCIES";
     public static final String MENU_VIEW_STATISTICS = "MENU_VIEW_STATISTICS";
+    public static final String MENU_SETTINGS_LANGUAGE_RUSSIAN = "MENU_SETTINGS_LANGUAGE_RUSSIAN";
+    public static final String MENU_SETTINGS_LANGUAGE_ENGLISH = "MENU_SETTINGS_LANGUAGE_ENGLISH";
     public static final String MENU_HELP_ABOUT = "MENU_HELP_ABOUT";
 
     public static final String TOOLBAR_OVERVIEW = "TOOLBAR_OVERVIEW";
@@ -39,6 +41,5 @@ public class HandlerCode {
     public static final String RIGHT = "RIGHT";
     public static final String STEP = "STEP";
     public static final String TYPE = "TYPE";
-
 
 }

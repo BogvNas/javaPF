@@ -23,22 +23,23 @@ public class MainDatePicker {
         UtilDateModel model = new UtilDateModel();
         Properties p = new Properties();
         p.put("text.today", Text.get("TODAY"));
-
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+
         datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
         model.setValue(new Date());
 
         JButton button = (JButton) datePicker.getComponent(1);
         button.setIcon(Style.ICON_DATE);
         button.setText("");
+
     }
 
-    public JDatePickerImpl getDatePicker(){
+    public JDatePickerImpl getDatePicker() {
         return datePicker;
     }
 
-    public void setValue(Date date){
-        ((UtilDateModel)datePicker.getModel()).setValue(date);
+    public void setValue(Date date) {
+        ((UtilDateModel) datePicker.getModel()).setValue(date);
     }
 
 }

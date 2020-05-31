@@ -1,5 +1,6 @@
 package com.company.gui.table;
 
+import com.company.gui.handler.FunctionsHandler;
 import com.company.gui.table.model.MainTableModel;
 import com.company.gui.table.model.TransactionTableModel;
 import com.company.gui.table.render.MainTableCellRenderer;
@@ -16,15 +17,15 @@ import java.awt.*;
 public class TransactionTableData extends TableData {
 
     private static final String[] columns = new String[]{"DATE", "ACCOUNT", "ARTICLE", "AMOUNT", "NOTICE"};
-    private static final ImageIcon[] icons = new ImageIcon[]{Style.ICON_DATE, Style.ICON_ACCOUNT, Style.ICON_ARTICLE,Style.ICON_AMOUNT, Style.ICON_NOTICE};
+    private static final ImageIcon[] icons = new ImageIcon[]{Style.ICON_DATE, Style.ICON_ACCOUNT, Style.ICON_ARTICLE, Style.ICON_AMOUNT, Style.ICON_NOTICE};
 
-    public TransactionTableData(){
-        super(new TransactionTableModel(columns), columns, icons);
+    public TransactionTableData(FunctionsHandler handler) {
+        super(new TransactionTableModel(columns), handler, columns, icons);
         init();
     }
 
-    public TransactionTableData(int count){
-        super(new TransactionTableModel(columns, count), columns, icons);
+    public TransactionTableData(FunctionsHandler handler, int count) {
+        super(new TransactionTableModel(columns, count), handler, columns, icons);
         init();
     }
 
@@ -33,15 +34,16 @@ public class TransactionTableData extends TableData {
         getColumn(Text.get("AMOUNT")).setCellRenderer(new TableCellAmountRenderer());
     }
 
-    private class TableCellAmountRenderer extends MainTableCellRenderer{
+    private class TableCellAmountRenderer extends MainTableCellRenderer {
 
         @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
-           Component renderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component renderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             if ((value.toString()).contains("-")) renderer.setForeground(Style.COLOR_EXP);
             else renderer.setForeground(Style.COLOR_INCOME);
             return renderer;
         }
+
     }
 
 }

@@ -5,6 +5,7 @@ import com.company.gui.MainFrame;
 import com.company.model.Article;
 import com.company.model.Common;
 import com.company.settings.Format;
+import com.company.settings.Style;
 
 import javax.swing.*;
 
@@ -22,13 +23,12 @@ public class ArticleAddEditDialog extends AddEditDialog {
     protected void init() {
         components.put("LABEL_TITLE", new JTextField());
 
-        values.put("LABEL_START_AMOUNT", Format.amount(0));
+        icons.put("LABEL_TITLE", Style.ICON_TITLE);
     }
 
     @Override
     protected void setValues() {
         Article article = (Article) c;
-
         values.put("LABEL_TITLE", article.getTitle());
     }
 
@@ -37,4 +37,5 @@ public class ArticleAddEditDialog extends AddEditDialog {
         String title = ((JTextField) components.get("LABEL_TITLE")).getText();
         return new Article(title);
     }
+
 }

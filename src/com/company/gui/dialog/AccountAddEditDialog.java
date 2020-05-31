@@ -15,7 +15,7 @@ import javax.swing.*;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class AccountAddEditDialog extends AddEditDialog{
+public class AccountAddEditDialog extends AddEditDialog {
 
     public AccountAddEditDialog(MainFrame frame) {
         super(frame);
@@ -45,13 +45,13 @@ public class AccountAddEditDialog extends AddEditDialog{
     @Override
     public Common getCommonFromForm() throws ModelException {
         try {
-
             String title = ((JTextField) components.get("LABEL_TITLE")).getText();
             String startAmount = ((JTextField) components.get("LABEL_START_AMOUNT")).getText();
-            Currency currency = (Currency)((CommonComboBox) components.get("LABEL_CURRENCY")).getSelectedItem();
+            Currency currency = (Currency) ((CommonComboBox) components.get("LABEL_CURRENCY")).getSelectedItem();
             return new Account(title, currency, Format.fromAmountToNumber(startAmount));
-        }catch ( NumberFormatException ex ){
+        } catch (NumberFormatException ex) {
             throw new ModelException(ModelException.AMOUNT_FORMAT);
         }
     }
+
 }

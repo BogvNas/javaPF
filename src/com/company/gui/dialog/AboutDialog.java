@@ -27,27 +27,24 @@ public class AboutDialog extends JDialog {
     }
 
     private void init() {
-       JEditorPane pane = new JEditorPane("text/html", Text.get("ABOUT"));
-       pane.setEditable(false);
-       pane.setOpaque(false);
+        JEditorPane pane = new JEditorPane("text/html", Text.get("ABOUT"));
+        pane.setEditable(false);
+        pane.setOpaque(false);
 
-       pane.addHyperlinkListener(new HyperlinkListener() {
-           @Override
-           public void hyperlinkUpdate(HyperlinkEvent he) {
-               if (HyperlinkEvent.EventType.ACTIVATED.equals(he.getEventType())){
-                   try {
-                       Desktop.getDesktop().browse(he.getURL().toURI());
-                   } catch (IOException e) {
-                       e.printStackTrace();
-                   } catch (URISyntaxException e) {
-                       e.printStackTrace();
-                   }
-               }
-           }
-       });
+        pane.addHyperlinkListener(new HyperlinkListener() {
+            @Override
+            public void hyperlinkUpdate(HyperlinkEvent he) {
+                if (HyperlinkEvent.EventType.ACTIVATED.equals(he.getEventType())) {
+                    try {
+                        Desktop.getDesktop().browse(he.getURL().toURI());
+                    } catch (URISyntaxException | IOException ex) {}
+                }
+            }
+        });
 
-       add(pane);
-       pack();
-       setLocationRelativeTo(null);
+        add(pane);
+        pack();
+        setLocationRelativeTo(null);
     }
+
 }

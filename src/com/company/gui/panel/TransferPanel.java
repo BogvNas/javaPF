@@ -1,6 +1,8 @@
 package com.company.gui.panel;
 
 import com.company.gui.MainFrame;
+import com.company.gui.dialog.TransferAddEditDialog;
+import com.company.gui.handler.FunctionsHandler;
 import com.company.gui.table.TransactionTableData;
 import com.company.gui.table.TransferTableData;
 import com.company.gui.toolbar.FunctionsToolBar;
@@ -17,8 +19,9 @@ import javax.swing.*;
 public class TransferPanel extends RightPanel {
 
     public TransferPanel(MainFrame frame) {
-        super(frame, new TransferTableData(), "TRANSFERS", Style.ICON_PANEL_TRANSFERS,
-               new JPanel[] {new FunctionsToolBar(), new FilterPanel(frame)});
+        super(frame, new TransferTableData(new FunctionsHandler(frame, new TransferAddEditDialog(frame))),
+                "TRANSFERS", Style.ICON_PANEL_TRANSFERS,
+                new JPanel[] {new FunctionsToolBar(new FunctionsHandler(frame, new TransferAddEditDialog(frame))), new FilterPanel(frame)});
     }
 
 }

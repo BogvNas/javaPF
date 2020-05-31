@@ -16,7 +16,7 @@ import javax.swing.event.ListSelectionListener;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class RightPanel extends AbstractPanel {
+abstract public class RightPanel extends AbstractPanel {
 
     protected TableData td;
 
@@ -46,23 +46,23 @@ public class RightPanel extends AbstractPanel {
     }
 
     @Override
-    public void refresh(){
+    public void refresh() {
         super.refresh();
-        if(td != null) td.refresh();
-        for (JPanel panel : panels){
-           if (panel instanceof Refresh) ((Refresh) panel).refresh();
+        if (td != null) td.refresh();
+        for (JPanel panel : panels) {
+            if (panel instanceof Refresh) ((Refresh) panel).refresh();
         }
     }
 
-    private void enableEditDelete(){
-        for (JPanel panel : panels){
+    private void enableEditDelete() {
+        for (JPanel panel : panels) {
             if (panel instanceof EnableEditDelete) ((EnableEditDelete) panel).setEnableEditDelete(false);
         }
         frame.getMenu().setEnableEditDelete(false);
 
-        if (td != null){
-            if (td.getSelectedRow() != -1){
-                for (JPanel panel : panels){
+        if (td != null) {
+            if (td.getSelectedRow() != -1) {
+                for (JPanel panel : panels) {
                     if (panel instanceof EnableEditDelete) ((EnableEditDelete) panel).setEnableEditDelete(true);
                 }
                 frame.getMenu().setEnableEditDelete(true);

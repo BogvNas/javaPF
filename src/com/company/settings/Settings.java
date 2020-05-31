@@ -16,6 +16,7 @@ import java.util.prefs.Preferences;
  * @link http://N.Petrov.com
  */
 final public class Settings {
+
     public static final File FONT_ROBOTO_LIGHT = new File("fonts/Roboto-Light.ttf");
     public static final File SAVE_DIR = new File("saves/");
     public static final String SAVE_FILE_EXT = "myrus";
@@ -31,40 +32,58 @@ final public class Settings {
     public static final String[] CURRENCIES_CODES = new String[]{"RUB", "USD", "EUR", "BYN", "UAH"};
 
     private static final File FILE_SETTINGS = new File("saves/settings.ini");
-    private static  File FILE_SAVE = new File("saves/default.myrus");
 
-    public static void init(){
+    private static File FILE_SAVE = new File("saves/default.myrus");
+
+    private static String LANGUAGE = "ru";
+
+    public static void init() {
         try {
             Ini ini = new Ini(FILE_SETTINGS);
-            Preferences pref = new IniPreferences(ini);
-            String file = pref.node("Settings").get("SAVE_FILE",null);
+            Preferences prefs = new IniPreferences(ini);
+            String file = prefs.node("Settings").get("FILE_SAVE", null);
             if (file != null) FILE_SAVE = new File(file);
+            String language = prefs.node("Settings").get("LANGUAGE", null);
+            if (language != null) LANGUAGE = language;
             setLocale();
-        } catch (IOException e) {
+        } catch (IOException ex) {
             save();
         }
-    }
-
-    private static void setLocale() {
-        Locale.setDefault(new Locale("ru"));
     }
 
     public static File getFileSave() {
         return FILE_SAVE;
     }
 
-    public static void setFileSave(File fileSave) {
-        Settings.FILE_SAVE = fileSave;
+    public static void setFileSave(File file) {
+        FILE_SAVE = file;
         save();
+    }
+
+    public static String getLanguage() {
+        return LANGUAGE;
+    }
+
+    public static void setLanguage(String language) {
+        LANGUAGE = language;
+        setLocale();
+        save();
+    }
+
+    private static void setLocale() {
+        if (LANGUAGE.equals("ru")) Locale.setDefault(new Locale("ru"));
+        else Locale.setDefault(new Locale("en"));
     }
 
     private static void save() {
         try {
             Wini ini = new Wini(FILE_SETTINGS);
-            ini.put("Settings","FILE_SAVE", FILE_SAVE.getAbsolutePath().replace("\\", "\\\\"));
+            if (FILE_SAVE != null) ini.put("Settings", "FILE_SAVE", FILE_SAVE.getAbsolutePath().replace("\\", "\\\\"));
+            ini.put("Settings", "LANGUAGE", LANGUAGE);
             ini.store();
-        } catch (IOException e) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, e);
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

@@ -16,7 +16,7 @@ import java.util.Date;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class TransferAddEditDialog extends AddEditDialog{
+public class TransferAddEditDialog extends AddEditDialog {
 
     public TransferAddEditDialog(MainFrame frame) {
         super(frame);
@@ -57,15 +57,16 @@ public class TransferAddEditDialog extends AddEditDialog{
     @Override
     public Common getCommonFromForm() throws ModelException {
         try {
-            Account fromAccount = ((Account)((CommonComboBox) components.get("LABEL_FROM_ACCOUNT")).getSelectedItem());
-            Account toAccount = ((Account)((CommonComboBox) components.get("LABEL_TO_ACCOUNT")).getSelectedItem());
+            Account fromAccount = (Account) ((CommonComboBox) components.get("LABEL_FROM_ACCOUNT")).getSelectedItem();
+            Account toAccount = (Account) ((CommonComboBox) components.get("LABEL_TO_ACCOUNT")).getSelectedItem();
             String fromAmount = ((JTextField) components.get("LABEL_FROM_AMOUNT")).getText();
             String toAmount = ((JTextField) components.get("LABEL_TO_AMOUNT")).getText();
             String notice = ((JTextField) components.get("LABEL_NOTICE")).getText();
-            Date date = (Date)((JDatePickerImpl) components.get("LABEL_DATE")).getModel().getValue();
+            Date date = (Date) ((JDatePickerImpl) components.get("LABEL_DATE")).getModel().getValue();
             return new Transfer(fromAccount, toAccount, Format.fromAmountToNumber(fromAmount), Format.fromAmountToNumber(toAmount), notice, date);
-        }catch ( NumberFormatException ex ){
+        } catch (NumberFormatException ex) {
             throw new ModelException(ModelException.AMOUNT_FORMAT);
         }
     }
+
 }

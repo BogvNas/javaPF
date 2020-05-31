@@ -21,11 +21,12 @@ public class MainFileChooser extends JFileChooser {
         setAcceptAllFileFilterUsed(false);
         setCurrentDirectory(Settings.SAVE_DIR);
 
-        UIManager.put("FileChooser.homeFolderToolTipText", Text.get("FC_HOME"));
         UIManager.put("FileChooser.saveDialogTitleText", Text.get("FC_SAVE"));
-        UIManager.put("FileChooser.openDialogTitleText", Text.get("FC_OPEN"));
         UIManager.put("FileChooser.lookInLabelText", Text.get("FC_LOOK"));
         UIManager.put("FileChooser.saveInLabelText", Text.get("FC_LOOK"));
+        UIManager.put("FileChooser.openDialogTitleText", Text.get("FC_OPEN"));
+
+        UIManager.put("FileChooser.homeFolderToolTipText", Text.get("FC_HOME"));
 
         UIManager.put("FileChooser.openButtonText", Text.get("FC_OPEN"));
         UIManager.put("FileChooser.openButtonToolTipText", Text.get("FC_OPEN"));
@@ -50,13 +51,15 @@ public class MainFileChooser extends JFileChooser {
         UIManager.put("FileChooser.acceptAllFileFilterText", Text.get("FC_ALL_FILTER"));
 
         updateUI();
+
     }
 
-    public int open(){
+    public int open() {
         return super.showOpenDialog(frame);
     }
 
-    public int save(){
+    public int save() {
         return super.showSaveDialog(frame);
     }
+
 }

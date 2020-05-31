@@ -19,7 +19,7 @@ public class StatisticsPanel extends RightPanel {
     private int type = TYPE_INCOME;
 
     public StatisticsPanel(MainFrame frame) {
-        super(frame, null, "STATISTICS", (ImageIcon) Style.ICON_PANEL_STATISTICS,
+        super(frame, null, "STATISTICS", Style.ICON_PANEL_STATISTICS,
             new JPanel[]{
                 new FilterPanel(frame),
                 new StatisticsTypePanel(frame, "CHART_INCOME"),

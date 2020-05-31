@@ -5,18 +5,20 @@ import com.company.gui.MainButton;
 import com.company.settings.HandlerCode;
 import com.company.settings.Style;
 import com.company.settings.Text;
+import com.company.gui.handler.*;
+
 
 /**
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class FunctionsToolBar extends AbstractToolBar implements EnableEditDelete {
+public final class FunctionsToolBar extends AbstractToolBar implements EnableEditDelete {
 
     private MainButton editButton;
     private MainButton deleteButton;
 
-    public FunctionsToolBar() {
-        super(Style.BORDER_FUNCTIONS_TOOLBAR);
+    public FunctionsToolBar(Handler handler) {
+        super(Style.BORDER_FUNCTIONS_TOOLBAR, handler);
         init();
     }
 
@@ -32,4 +34,5 @@ public class FunctionsToolBar extends AbstractToolBar implements EnableEditDelet
         editButton.setEnabled(enable);
         deleteButton.setEnabled(enable);
     }
+
 }

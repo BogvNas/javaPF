@@ -1,5 +1,6 @@
 package com.company.gui.toolbar;
 
+import com.company.gui.handler.MainToolBarHandler;
 import com.company.settings.HandlerCode;
 import com.company.settings.Style;
 import com.company.settings.Text;
@@ -10,8 +11,8 @@ import com.company.settings.Text;
  */
 public final class MainToolBar extends AbstractToolBar {
 
-    public MainToolBar() {
-        super(Style.BORDER_MAIN_TOOLBAR);
+    public MainToolBar(MainToolBarHandler handler) {
+        super(Style.BORDER_MAIN_TOOLBAR, handler);
         init();
     }
 
@@ -25,4 +26,5 @@ public final class MainToolBar extends AbstractToolBar {
         addButton(Text.get("TOOLBAR_CURRENCIES"), Style.ICON_TOOLBAR_CURRENCIES, HandlerCode.TOOLBAR_CURRENCIES, true);
         addButton(Text.get("TOOLBAR_STATISTICS"), Style.ICON_TOOLBAR_STATISTICS, HandlerCode.TOOLBAR_STATISTICS, true);
     }
+
 }

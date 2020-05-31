@@ -8,14 +8,14 @@ import com.company.saveload.SaveData;
  */
 abstract public class Common {
 
-     public Common() {
-     }
+    public Common() {}
 
-     public String getValueForComboBox(){
-          return null;
-     }
+    public String getValueForComboBox() {
+        return null;
+    }
 
-     public void postAdd(SaveData sd){}
-     public void postEdit(SaveData sd){}
-     public void postRemove(SaveData sd){}
+    public void postAdd(SaveData sd) {}
+    public void postEdit(SaveData sd) {}
+    public void postRemove(SaveData sd) {}
+
 }

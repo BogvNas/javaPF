@@ -58,5 +58,5 @@ public class Statistics {
     private static double round(double value) {
         return (double) Math.round(value * 100) / 100;
     }
-}
 
+}

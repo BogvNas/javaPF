@@ -14,7 +14,6 @@ public class ArticleTableModel extends MainTableModel {
     private static final int TITLE = 0;
 
     public ArticleTableModel(String[] columns) {
-
         super(SaveData.getInstance().getArticles(), columns);
     }
 
@@ -25,13 +24,13 @@ public class ArticleTableModel extends MainTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-
         if (data.isEmpty()) return null;
         Article article = (Article) data.get(row);
-        switch (column){
+        switch (column) {
             case TITLE:
                 return article.getTitle();
         }
         return null;
     }
+
 }

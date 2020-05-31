@@ -20,27 +20,27 @@ import java.util.Map;
  */
 public final class Chart {
 
-        private DefaultPieDataset dataset;
-        private String title;
-        private String currencyTitle;
+    private DefaultPieDataset dataset;
+    private final String title;
+    private final String currencyTitle;
 
-        public Chart(HashMap<String, Double> data, String title, String currencyTitle){
-            setData(data);
-            this.title = Text.get(title);
-            this.currencyTitle = currencyTitle;
-        }
+    public Chart(HashMap<String, Double> data, String title, String currencyTitle) {
+        setData(data);
+        this.title = Text.get(title);
+        this.currencyTitle = currencyTitle;
+    }
 
     private void setData(HashMap<String, Double> data) {
-            dataset = new DefaultPieDataset();
-        for (Map.Entry<String, Double> entry: data.entrySet()){
+        dataset = new DefaultPieDataset();
+        for (Map.Entry<String, Double> entry : data.entrySet()) {
             dataset.setValue(entry.getKey(), entry.getValue());
         }
     }
 
-    public JPanel getPanel(){
-        JFreeChart chart = ChartFactory.createPieChart(title,dataset,true,true,false);
-        PiePlot plot =(PiePlot) chart.getPlot();
-        plot.setToolTipGenerator(new StandardPieToolTipGenerator("{0} (1}" + currencyTitle + " ((2})"));
+    public JPanel getPanel() {
+        JFreeChart chart = ChartFactory.createPieChart3D(title, dataset, true, true, false);
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setToolTipGenerator(new StandardPieToolTipGenerator("{0}: {1} " + currencyTitle + " ({2})"));
         JPanel panel = new ChartPanel(chart);
         panel.setPreferredSize(Style.DIMENSION_CHART);
         if (dataset.getItemCount() == 0) {
@@ -51,4 +51,5 @@ public final class Chart {
         }
         return panel;
     }
+
 }

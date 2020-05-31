@@ -9,15 +9,14 @@ import java.util.Objects;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class Article extends Common{
+public class Article extends Common {
 
     private String title;
 
-    public Article() {
-    }
+    public Article() {}
 
     public Article(String title) throws ModelException {
-        if(title.length() == 0) throw new ModelException(ModelException.TITLE_EMPTY);
+        if (title.length() == 0) throw new ModelException(ModelException.TITLE_EMPTY);
         this.title = title;
     }
 
@@ -31,22 +30,32 @@ public class Article extends Common{
 
     @Override
     public String toString() {
-        return "Article{" +
-                "title='" + title + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Article article = (Article) o;
-        return title.equals(article.title);
+        return "Article{" + "title=" + title + '}';
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.title);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Article other = (Article) obj;
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -55,8 +64,9 @@ public class Article extends Common{
     }
 
     @Override
-    public void postEdit(SaveData sd){
+    public void postEdit(SaveData sd) {
         for (Transaction t : sd.getTransactions())
-            if(t.getArticle().equals(sd.getOldCommon())) t.setArticle(this);
+            if (t.getArticle().equals(sd.getOldCommon())) t.setArticle(this);
     }
+
 }

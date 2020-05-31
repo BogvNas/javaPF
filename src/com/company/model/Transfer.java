@@ -9,7 +9,7 @@ import java.util.Date;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class Transfer extends Common{
+public class Transfer extends Common {
 
     private Account fromAccount;
     private Account toAccount;
@@ -18,14 +18,13 @@ public class Transfer extends Common{
     private String notice;
     private Date date;
 
-    public Transfer() {
-    }
+    public Transfer() {}
 
     public Transfer(Account fromAccount, Account toAccount, double fromAmount, double toAmount, String notice, Date date) throws ModelException {
-        if(fromAccount == null) throw new ModelException(ModelException.ACCOUNT_EMPTY);
-        if(toAccount == null) throw new ModelException(ModelException.ACCOUNT_EMPTY);
-        if(fromAmount < 0 || toAmount < 0) throw new ModelException(ModelException.AMOUNT_FORMAT);
-
+        if (fromAccount == null) throw new ModelException(ModelException.ACCOUNT_EMPTY);
+        if (toAccount == null) throw new ModelException(ModelException.ACCOUNT_EMPTY);
+        if (fromAmount < 0 || toAmount < 0) throw new ModelException(ModelException.AMOUNT_FORMAT);
+        if (date == null) throw new ModelException(ModelException.DATE_FORMAT);
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
         this.fromAmount = fromAmount;
@@ -38,8 +37,8 @@ public class Transfer extends Common{
         this(fromAccount, toAccount, fromAmount, toAmount, notice, new Date());
     }
 
-    public Transfer(Account fromAccount, Account toAccount, double fromAmount, double toAmount, Date data) throws ModelException {
-        this(fromAccount, toAccount, fromAmount, toAmount, "", data);
+    public Transfer(Account fromAccount, Account toAccount, double fromAmount, double toAmount, Date date) throws ModelException {
+        this(fromAccount, toAccount, fromAmount, toAmount, "", date);
     }
 
     public Transfer(Account fromAccount, Account toAccount, double fromAmount, double toAmount) throws ModelException {
@@ -96,14 +95,7 @@ public class Transfer extends Common{
 
     @Override
     public String toString() {
-        return "Transfer{" +
-                "fromAccount=" + fromAccount +
-                ", toAccount=" + toAccount +
-                ", fromAmount=" + fromAmount +
-                ", toAmount=" + toAmount +
-                ", notice='" + notice + '\'' +
-                ", date=" + date +
-                '}';
+        return "Transfer{" + "fromAccount=" + fromAccount + ", toAccount=" + toAccount + ", fromAmount=" + fromAmount + ", toAmount=" + toAmount + ", notice=" + notice + ", date=" + date + '}';
     }
 
     @Override
@@ -125,4 +117,5 @@ public class Transfer extends Common{
         for (Account a : sd.getAccounts())
             a.setAmountFromTransactionsAndTransfers(sd.getTransactions(), sd.getTransfers());
     }
+
 }

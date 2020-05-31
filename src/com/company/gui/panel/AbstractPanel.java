@@ -19,9 +19,10 @@ abstract public class AbstractPanel extends JPanel implements Refresh {
 
     @Override
     public void refresh() {
-    removeAll();
-    init();
+        removeAll();
+        init();
     }
 
     abstract protected void init();
+
 }

@@ -7,4 +7,5 @@ package com.company.gui;
 public interface Refresh {
 
     public void refresh();
+
 }

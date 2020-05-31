@@ -1,5 +1,7 @@
 package com.company.gui;
 
+import com.company.gui.handler.MainToolBarHandler;
+import com.company.gui.handler.MainWindowHandler;
 import com.company.gui.menu.MainMenu;
 import com.company.gui.panel.*;
 import com.company.gui.toolbar.MainToolBar;
@@ -13,20 +15,20 @@ import java.awt.*;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class MainFrame extends JFrame implements Refresh{
+public final class MainFrame extends JFrame implements Refresh {
 
     private final GridBagConstraints constraints;
+    private final MainMenu mb;
     private final LeftPanel leftPanel;
     private RightPanel rightPanel;
-    private final MainMenu mb;
     private final MainToolBar tb;
 
-    public MainFrame(){
+    public MainFrame() {
         super(Text.get("PROGRAMM_NAME"));
 
         setResizable(false);
         setIconImage(Style.ICON_MAIN.getImage());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         mb = new MainMenu(this);
         setJMenuBar(mb);
@@ -39,27 +41,23 @@ public class MainFrame extends JFrame implements Refresh{
         constraints.gridy = 0;
         constraints.gridwidth = 2;
 
-        //add toolbar
-        tb = new MainToolBar();
-        add(tb,constraints);
+        tb = new MainToolBar(new MainToolBarHandler(this));
+        add(tb, constraints);
 
         constraints.gridy = 1;
         constraints.gridwidth = 1;
         constraints.anchor = GridBagConstraints.NORTH;
 
-        //add left panel
         leftPanel = new LeftPanel(this);
         add(leftPanel, constraints);
 
-        //RightPanel
-        setRightPanel(new StatisticsPanel(this));
+        setRightPanel(new OverviewPanel(this));
 
         pack();
         setLocationRelativeTo(null);
 
-
+        addWindowListener(new MainWindowHandler());
     }
-
 
     @Override
     public void refresh() {
@@ -84,5 +82,8 @@ public class MainFrame extends JFrame implements Refresh{
         pack();
     }
 
-    public RightPanel getRightPanel() { return rightPanel; }
+    public RightPanel getRightPanel() {
+        return rightPanel;
+    }
+
 }

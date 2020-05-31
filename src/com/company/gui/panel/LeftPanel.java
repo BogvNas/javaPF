@@ -34,7 +34,6 @@ public final class LeftPanel extends AbstractPanel {
 
         addBalanceCurrency();
 
-        //Panel of Amount balance
         add(Box.createVerticalStrut(Style.PADDING_PANEL_BIG));
 
         JLabel headerB = new JLabel(Text.get("BALANCE"));
@@ -47,7 +46,7 @@ public final class LeftPanel extends AbstractPanel {
     }
 
     private void addBalanceCurrency() {
-        for (Currency currency : SaveData.getInstance().getCurrencies()) {
+        for (Currency currency : SaveData.getInstance().getEnableCurrencies()) {
             add(Box.createVerticalStrut(Style.PADDING_BALANCE));
             add(new PanelBalanceCurrency(currency, Statistics.getBalanceCurrency(currency)));
         }
@@ -80,4 +79,5 @@ public final class LeftPanel extends AbstractPanel {
             add(amountLabel, BorderLayout.EAST);
         }
     }
+
 }

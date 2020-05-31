@@ -57,10 +57,6 @@ abstract public class MainTableModel extends AbstractTableModel implements Refre
         return data.get(row);
     }
 
-    public Object getObjectByRow(int row){
-        return data.get(row);
-    }
-
     abstract protected void updateData();
 
 }

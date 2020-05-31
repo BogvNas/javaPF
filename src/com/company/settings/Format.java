@@ -11,25 +11,25 @@ import java.util.Date;
  * @author N.Petrov
  * @link http://N.Petrov.com
  */
-public class Format {
+final public class Format {
 
-    public static String amount(double amount){
-        return String.format(Settings.FORMAT_AMOUNT,amount);
+    public static String amount(double amount) {
+        return String.format(Settings.FORMAT_AMOUNT, amount);
     }
 
-    public static String amount(double amount, Currency currency){
+    public static String amount(double amount, Currency currency) {
         return amount(amount) + " " + currency.getCode();
     }
 
-    public static String rate(double rate){
+    public static String rate(double rate) {
         return String.format(Settings.FORMAT_RATE, rate);
     }
 
-    public static String rate(double rate, Currency currency){
+    public static String rate(double rate, Currency currency) {
         return rate(rate) + " " + currency.getCode();
     }
 
-    public static String date(Date date){
+    public static String date(Date date) {
         return dateFormat(date, Settings.FORMAT_DATE);
     }
 
@@ -37,22 +37,22 @@ public class Format {
         return dateFormat(date, Settings.FORMAT_DATE_MONTH);
     }
 
-    public static String dateYear(Date date){
+    public static String dateYear(Date date) {
         return dateFormat(date, Settings.FORMAT_DATE_YEAR);
     }
 
-    public static double fromAmountToNumber(String amount) throws NumberFormatException{
+    private static String dateFormat(Date date, String format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format, new MainDateFormatSymbols());
+        return sdf.format(date);
+    }
+
+    public static double fromAmountToNumber(String amount) throws NumberFormatException {
         amount = amount.replaceAll(",", ".");
         return Double.parseDouble(amount);
     }
 
-    private static String dateFormat(Date date, String formatDate) {
-        SimpleDateFormat sdf = new SimpleDateFormat(formatDate , new MainDateFormatSymbols());
-        return sdf.format(date);
-    }
-
-    public static String yesNo(boolean yes){
-        if(yes) return Text.get("YES");
+    public static String yesNo(boolean yes) {
+        if (yes) return Text.get("YES");
         return Text.get("NO");
     }
 
@@ -69,10 +69,13 @@ public class Format {
         return null;
     }
 
-    private  static class MainDateFormatSymbols extends DateFormatSymbols{
+    private static class MainDateFormatSymbols extends DateFormatSymbols {
+
         @Override
-        public String[] getMonths(){
-           return Text.getMonths();
+        public String[] getMonths() {
+            return Text.getMonths();
         }
+
     }
+
 }

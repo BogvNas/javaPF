@@ -28,7 +28,6 @@ public class CurrencyTableModel extends MainTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-
         if (data.isEmpty()) return null;
         Currency currency = (Currency) data.get(row);
         switch (column) {
@@ -41,7 +40,9 @@ public class CurrencyTableModel extends MainTableModel {
             case ON:
                 return Format.yesNo(currency.isOn());
             case BASE:
-                return Format.yesNo(currency.isBase());        }
+                return Format.yesNo(currency.isBase());
+        }
         return null;
     }
+
 }

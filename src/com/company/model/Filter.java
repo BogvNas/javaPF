@@ -56,7 +56,7 @@ public class Filter {
     }
 
     public boolean check(Date date) {
-        return ((date.compareTo(from) > 0) && (date.compareTo(to) < 0));//change the condition after completing the course
+        return (date.compareTo(from) > 0) && (date.compareTo(to) < 0);
     }
 
     private void setFromTo(Calendar calendar) {
@@ -97,7 +97,6 @@ public class Filter {
                         11,
                         31,
                         23, 59, 59).getTime();
-                break;
         }
     }
 
